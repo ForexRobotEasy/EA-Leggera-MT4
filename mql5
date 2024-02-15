@@ -1,0 +1,100 @@
+mql5
+//+------------------------------------------------------------------+
+//|                                            EA Leggera MT4        |
+//|                                           forexroboteasy.com     |
+//|                                           Forex Robot Easy Team   |
+//+------------------------------------------------------------------+
+
+// Define input parameters
+input double lotSize = 0.01;  // Lot size for trading
+input double stopLoss = 50;   // Stop loss value in pips
+input double takeProfit = 100;   // Take profit value in pips
+
+// Define global variables
+double lastBid;
+double lastAsk;
+
+//+------------------------------------------------------------------+
+//| Expert initialization function                                   |
+//+------------------------------------------------------------------+
+int OnInit()
+{
+   // Initialize global variables
+   lastBid = Bid;
+   lastAsk = Ask;
+   
+   // Add additional initialization code here
+   
+   return INIT_SUCCEEDED;
+}
+
+//+------------------------------------------------------------------+
+//| Expert deinitialization function                                 |
+//+------------------------------------------------------------------+
+void OnDeinit(const int reason)
+{
+   // Add deinitialization code here
+}
+
+//+------------------------------------------------------------------+
+//| Expert tick function                                             |
+//+------------------------------------------------------------------+
+void OnTick()
+{
+   bool openTrade = ShouldOpenTrade();
+   bool closeTrade = ShouldCloseTrade();
+   
+   if (openTrade)
+   {
+      OpenTrade();
+   }
+   
+   if (closeTrade)
+   {
+      CloseTrade();
+   }
+}
+
+//+------------------------------------------------------------------+
+//| Function to check if a trade should be opened                     |
+//+------------------------------------------------------------------+
+bool ShouldOpenTrade()
+{
+   // Implement advanced flat trading methods and adaptive trend methods
+   // Add code to analyze market situation and determine if a trade should be opened
+   
+   return true;   // Open trade for testing purposes
+}
+
+//+------------------------------------------------------------------+
+//| Function to open a trade                                          |
+//+------------------------------------------------------------------+
+void OpenTrade()
+{
+   // Place code to open a trade here
+   
+   // Log trade details
+   Print('Trade opened at ', Symbol(), ' - ', TimeCurrent());
+}
+
+//+------------------------------------------------------------------+
+//| Function to check if a trade should be closed                     |
+//+------------------------------------------------------------------+
+bool ShouldCloseTrade()
+{
+   // Implement safe and reliable trading strategy
+   // Add code to analyze market situation and determine if a trade should be closed
+   
+   return false;   // Do not close trade for testing purposes
+}
+
+//+------------------------------------------------------------------+
+//| Function to close a trade                                         |
+//+------------------------------------------------------------------+
+void CloseTrade()
+{
+   // Place code to close a trade here
+   
+   // Log trade details
+   Print('Trade closed at ', Symbol(), ' - ', TimeCurrent());
+}
